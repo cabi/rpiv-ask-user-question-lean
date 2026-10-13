@@ -1,0 +1,18 @@
+{
+ "prompt": "Optimize the note search.",
+ "ext": "/home/carsten/Projects/pi-extensions/rpiv-ask-user-question/src/index.ts",
+ "settled": true,
+ "timed_out": false,
+ "duration_s": 57.8,
+ "ask_calls": 0,
+ "tool_calls": {
+  "bash": 3,
+  "read": 4,
+  "edit": 1
+ },
+ "dialogs": [],
+ "asked_in_text": false,
+ "assistant_tail": "(case variants, substrings, exact body words, empty/whitespace): identical results.\n- **Performance** \u2014 at 50k notes: ~100ms \u2192 ~10ms (5\u201310x). With the current 5 notes it's negligible either way, but the hot path no longer allocates.\n\nBehavior is unchanged: title matches are case-insensitive substrings, body matches are exact words (split on whitespace/commas), and an empty `q` still returns everything (via `title.includes(\"\")`).\n\nNext step if you ever need more scale: an inverted index (`word \u2192 note ids`) would make body-word queries O(matches), but that's overkill for a static in-memory list.",
+ "ask_result_texts": [],
+ "exit_code": 0
+}

@@ -1,1 +1,4 @@
 node_modules/
+scripts/live-test/runs/*.jsonl
+scripts/live-test/runs/*.stderr
+__pycache__/

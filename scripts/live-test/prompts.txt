@@ -1,0 +1,6 @@
+Add pagination to the user list.
+Make the port and other settings configurable.
+Improve the error handling in server.js.
+Add caching to the external requests in lib/fetch.js.
+Add dark mode to the web UI.
+Optimize the note search.

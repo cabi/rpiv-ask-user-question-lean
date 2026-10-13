@@ -1,0 +1,18 @@
+{
+ "prompt": "Add caching to the external requests in lib/fetch.js.",
+ "ext": "/home/carsten/Projects/pi-extensions/rpiv-ask-user-question/src/index.ts",
+ "early_stop": true,
+ "stop_reason": "committed",
+ "duration_s": 17.0,
+ "ask_calls": 0,
+ "tool_calls": {
+  "read": 1,
+  "bash": 2,
+  "edit": 1
+ },
+ "dialogs": [],
+ "asked_in_text": false,
+ "assistant_tail": "I'll add a simple in-memory TTL cache keyed by city, sharing in-flight promises so concurrent identical requests only hit the API once.",
+ "ask_result_texts": [],
+ "exit_code": 0
+}

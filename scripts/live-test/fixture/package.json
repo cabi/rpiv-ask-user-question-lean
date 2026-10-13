@@ -1,0 +1,7 @@
+{
+	"name": "notes-api",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Tiny notes service used as a fixture for live tool-usage tests",
+	"main": "server.js"
+}
