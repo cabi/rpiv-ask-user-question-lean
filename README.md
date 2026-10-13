@@ -40,6 +40,23 @@ Then in your pi extension config, point at this package instead of upstream:
 }
 ```
 
+## Keeping up with upstream
+
+Pin the upstream version and upgrade by hand. The process is nearly always the same, so you can hand it to an agent too (this is the sync prompt from [Make your own lean version](https://github.com/kunkun9527/my-lean-pi-setup/blob/main/docs/make-your-own-lean.md), with this package's names filled in):
+
+```text
+Sync rpiv-ask-user-question-lean to the latest version of @juicesharp/rpiv-ask-user-question.
+
+1. Read MAINTENANCE.md first to understand the current upstream version and adaptation points.
+2. Check the latest upstream version. Compare the code and changelog between the two versions, and list: tool changes (name, registration shape), changes to parameters and defaults, behavior changes, and whether the internals recorded in MAINTENANCE.md still hold.
+3. If only the version number changed and the code didn't, just upgrade the dependency.
+4. For new or changed parameters, add them to the lean schema using the same trimming rules: keep field names, types, and constraints, drop prose, and only keep a short description where a field name is unclear. If upstream changed behavior, update the lean description and guidelines so they still match what the tool does.
+5. Run the tests, re-measure the tokens, and update the README and MAINTENANCE.md.
+6. Summarize the changes for me, and only publish after I confirm.
+```
+
+Most upstream updates only change internal logic, so upgrading the dependency is all it takes. When the wrapper does need changes, it's usually because upstream changed the tool's schema, its guidance config fields, or the strings and internals listed in MAINTENANCE.md.
+
 ## Development
 
 ```sh
