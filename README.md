@@ -28,16 +28,24 @@ Measured with `npm run measure` (js-tiktoken, gpt-4o encoding):
 
 ## Install
 
+This is a pi package. Install it from GitHub:
+
 ```sh
-npm install rpiv-ask-user-question-lean
+pi install git:github.com/cabi/rpiv-ask-user-question-lean
 ```
 
-Then in your pi extension config, point at this package instead of upstream:
+That writes the extension to `~/.pi/agent/settings.json` (add `-l` to install it into the current project's `.pi/settings.json` instead). If you had upstream `@juicesharp/rpiv-ask-user-question` installed, remove it so the questionnaire isn't registered twice:
 
-```json
-{
-	"extensions": ["rpiv-ask-user-question-lean"]
-}
+```sh
+pi remove npm:@juicesharp/rpiv-ask-user-question
+```
+
+Useful follow-ups:
+
+```sh
+pi list                      # verify the package is configured
+pi -e git:github.com/cabi/rpiv-ask-user-question-lean   # try it for one invocation
+pi update --extensions       # reconcile the checkout after upstream syncs
 ```
 
 ## Keeping up with upstream
