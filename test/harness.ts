@@ -22,7 +22,9 @@ export async function captureUpstreamTools() {
 	const fakePi = {
 		registerTool: () => ({ definition: {} }),
 		on: () => undefined,
-		events: { emit: () => undefined },
+		// Since 2.13.9 upstream subscribes pi.events.on("rpiv:ask-user:answer")
+		// at registration (inbound answer channel); emit is used by every prompt.
+		events: { on: () => undefined, emit: () => undefined },
 	};
 	const { proxiedPi, capturedTools } = wrapUpstream(fakePi);
 	await (upstreamPkg as unknown as (pi: PiLike) => Promise<unknown>)(proxiedPi);
@@ -47,7 +49,8 @@ export class Harness {
 	handlers = new Map<string, ((...args: unknown[]) => unknown)[]>();
 	handlerCalls: HandlerCall[] = [];
 	setActiveCalls: unknown[][] = [];
-	events: { event: string; payload: unknown }[] = [];
+	/** Minimal events bus: upstream registers an inbound-answer listener on it. */
+	events = { on: () => undefined, emit: () => undefined };
 	uiCustomCalls: {
 		kind: string;
 		props: Record<string, unknown>;

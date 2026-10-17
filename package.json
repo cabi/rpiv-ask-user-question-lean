@@ -21,8 +21,8 @@
 		"measure": "tsx scripts/measure.ts"
 	},
 	"dependencies": {
-		"@juicesharp/rpiv-ask-user-question": "2.13.8",
-		"@juicesharp/rpiv-config": "2.13.8"
+		"@juicesharp/rpiv-ask-user-question": "2.13.9",
+		"@juicesharp/rpiv-config": "2.13.9"
 	},
 	"peerDependencies": {
 		"@earendil-works/pi-coding-agent": "*",

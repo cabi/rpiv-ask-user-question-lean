@@ -2,7 +2,7 @@
 
 A token-lean wrapper around **[@juicesharp/rpiv-ask-user-question](https://www.npmjs.com/package/@juicesharp/rpiv-ask-user-question)** by **juicesharp** (MIT). This project keeps every upstream feature — validation, the questionnaire UI, RPC fallback, i18n, response envelopes — and only shortens the tool description and parameter schema the model reads on every request.
 
-Upstream is installed as a pinned dependency (`2.13.8`) and wrapped via a Proxy; no upstream code is copied or modified. The original MIT license is kept (see [LICENSE](./LICENSE)).
+Upstream is installed as a pinned dependency (`2.13.9`) and wrapped via a Proxy; no upstream code is copied or modified. The original MIT license is kept (see [LICENSE](./LICENSE)).
 
 ## How it works
 

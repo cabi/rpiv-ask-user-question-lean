@@ -5,11 +5,11 @@ release is listed here, with the checks that catch it.
 
 ## Matching upstream version
 
-- `@juicesharp/rpiv-ask-user-question`: **2.13.8** (pinned, exact)
-- `@juicesharp/rpiv-config`: **2.13.8** (pinned, exact; used only to re-read
+- `@juicesharp/rpiv-ask-user-question`: **2.13.9** (pinned, exact)
+- `@juicesharp/rpiv-config`: **2.13.9** (pinned, exact; used only to re-read
   the user's `guidance` overrides the same way upstream does)
 - Re-measure and re-review after any upstream bump; the trim tables below
-  describe 2.13.8 texts.
+  describe 2.13.9 texts.
 
 ## What was trimmed, per tool
 
@@ -36,8 +36,12 @@ constants are ours).
    the tool, the reconciler-freeze test and README need updating.
 2. **Registration shape** — upstream's default export is the register
    function (`export default function (pi) {...}`); it calls
-   `pi.registerTool(tool)` once and `pi.on("before_agent_start", ...)`.
-   The wrapper only assumes registerTool; `on` passes through untouched.
+   `pi.registerTool(tool)` once, `pi.on("before_agent_start", ...)` (the
+   reconciler), and — since 2.13.9 — `registerAnswerChannel(pi)`, which
+   subscribes `pi.events.on("rpiv:ask-user:answer", ...)` (inbound external
+   answers, first answer wins). The wrapper only assumes registerTool; `on`
+   and `events` pass through untouched, so external answers reach the lean
+   tool through upstream's own execute.
 3. **Exports map** — the package exports only `.` and `./events`. The
    runtime wrapper must go through the public entry (Proxy capture), never a
    deep import; tests load upstream the same way. A dist/ build with the
